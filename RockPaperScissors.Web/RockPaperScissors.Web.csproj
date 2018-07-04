@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <ApplicationIcon />
+    <Win32Resource />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\images\paper_selected_computer.jpg" />
+    <Content Remove="wwwroot\images\rock_selected_computer.jpg" />
+    <Content Remove="wwwroot\images\scissors_selected_computer.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RockPaperScissors.Services.Interface\RockPaperScissors.Services.Interface.csproj" />
+    <ProjectReference Include="..\RockPaperScissors.Services\RockPaperScissors.Services.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,20 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": true,
+    "anonymousAuthentication": false,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:36812",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+        "commandName": "IISExpress",
+        "launchBrowser": true,
+        "launchUrl": "http://localhost:36812/RockPaperScissors/RockPaperScissorsGame",
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+        }
+    }
+  }
+}

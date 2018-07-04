@@ -1,0 +1,39 @@
+﻿@model PlayersHomePageViewModel 
+@{
+    ViewData["Title"] = "Rock Paper Scissors";
+}
+<form id="RockPaperScissorsGameForm" method="post" name="RockPaperScissorsGameForm" asp-antiforgery="true">
+    <div class="container" id="Home">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <h3>Please confirm your name and select enter to play Rock Paper Scissors!</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <label asp-for="@Model.PlayerOne"></label>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="PlayerOne.UserName"/>
+                    <input type="hidden" name="PlayerOne" />
+                    <span asp-validation-for="@Model.PlayerOne.UserName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <label asp-for="@Model.PlayerTwo"></label>
+                <div class="form-group">
+                    <select asp-for="@Model.PlayerTwo" asp-items="@Model.Players" class="form-control"><option></option></select>
+                    <span asp-validation-for="@Model.PlayerTwo" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <a asp-controller="RockPaperScissors" asp-action="RockPaperScissorsGame" class="btn btn-info" data-target="RockPaperScissorsGame">Enter !</a>
+            </div>
+        </div>
+        </div>
+        
+</form>
+<div id="refreshDiv" class="hide"></div>

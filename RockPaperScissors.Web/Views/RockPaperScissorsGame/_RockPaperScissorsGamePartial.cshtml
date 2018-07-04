@@ -1,0 +1,98 @@
+﻿@model RockPaperScissorsGameViewModel
+
+<form id="ResultsForm" method="post" name="ResultsForm" asp-antiforgery="true">
+    <h2 class="@Model.SubmitButtonClass">Best to 5 Wins! Good Luck @Model.PlayerOne.UserName</h2>
+    <h3 class="@Model.SaveButtonClass">Well Done You Have Won! Please Save Your Details And Play Again!</h3>
+    <h3 class="@Model.ResetButtonClass">You Lost! Reset The Game And Try Again!</h3>
+    <div class="row">
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            <a data-target="RockClick" data-value="@Actions.ROCK"><img src="~/images/rock_unselected.jpg" /></a>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            <a data-target="PaperClick" data-value="@Actions.PAPER"><img src="~/images/paper_unselected.jpg" /></a>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            <a data-target="ScissorsClick" data-value="@Actions.SCISSORS"><img src="~/images/scissors_unselected.jpg" /></a>
+        </div>
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            <div class="form-group">
+                <a data-target="SubmitSelection" asp-controller="RockPaperScissors" asp-action="SubmitSelection" class="@Model.SubmitButtonClass btn btn-info">Submit Selection</a>
+                <a asp-controller="RockPaperScissors" asp-action="RockPaperScissorsGame" class="@Model.ResetButtonClass btn btn-info">RESET GAME</a>
+                <a data-target="SaveUserScoreSheet" asp-controller="RockPaperScissors" asp-action="SaveUserScoreSheet" class="@Model.SaveButtonClass btn btn-info">Save ScoreSheet</a>
+            </div>
+            <div class="@Model.ResetButtonClass">
+                <span class="alert-danger">Unfotunately @Model.PlayerTwo.UserName Has Won! Please Reset Game!</span>
+            </div>
+            <div class="@Model.SaveButtonClass">
+                <label>Name:</label>
+                <div>
+                    <input type="text" asp-for="@Model.PlayerOne.UserName" />
+                </div>
+                <div>
+                    <span data-valmsg-replace="true" data-valmsg-for="playerOne.PlayerOne.UserName" class="text-danger"></span>
+                </div>
+                <label>Email:</label>
+                <div>
+                    <input type="text" asp-for="@Model.PlayerOne.EmailAddress" />
+                </div>
+                <div>
+                    <span data-valmsg-replace="true" data-valmsg-for="playerOne.PlayerOne.EmailAddress" class="text-danger"></span>
+                </div>
+                <label>Mobile:</label>
+                <div>
+                    <input type="text" asp-for="@Model.PlayerOne.MobileNumber"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-bordered" style="margin-top:10px; margin-bottom:10px">
+        <thead>
+            <tr>
+                <td>
+                    Player
+                </td>
+                <td>
+                    Wins
+                </td>
+                <td>
+                    Losses
+                </td>
+                <td>
+                    Ties
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-target="PlayerOneRow" class="@Model.PlayerUserTableRowClass">
+                <td>
+                    @Model.PlayerOne.UserName
+                </td>
+                <td>
+                    @Model.PlayerOne.ScoreSheet.Wins
+                </td>
+                <td>
+                    @Model.PlayerOne.ScoreSheet.Losses
+                </td>
+                <td>
+                    @Model.PlayerOne.ScoreSheet.Ties
+                </td>
+            </tr>
+            <tr data-target="PlayerTwoRow" class="@Model.PlayerComputerTableRowClass">
+                <td>
+                    @Model.PlayerTwo.UserName
+                </td>
+                <td>
+                    @Model.PlayerTwo.ScoreSheet.Wins
+                </td>
+                <td>
+                    @Model.PlayerTwo.ScoreSheet.Losses
+                </td>
+                <td>
+                    @Model.PlayerTwo.ScoreSheet.Ties
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="hidden" name="Action" />
+</form>
